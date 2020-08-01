@@ -1,0 +1,1 @@
+bot: pipenv run bot
