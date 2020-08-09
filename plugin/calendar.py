@@ -4,15 +4,18 @@ from discord.ext.commands import Context
 from discord.ext.commands import command
 from logic.calendar import CalendarImpl
 
+
 class Calendar(Cog):
     def __init__(self, bot: Bot) -> None:
         self.bot = bot
 
-
     @command()
-    async def add_event(self, ctx: Context, title: str, date: str, location: str) -> None:
+    async def add_event(
+        self, ctx: Context, title: str, date: str, location: str
+    ) -> None:
         CalendarImpl.add_event(title, date, location)
         await ctx.send("Success!")
+
 
 def setup(bot):
     bot.add_cog(Calendar(bot))
