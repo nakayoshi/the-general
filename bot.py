@@ -5,7 +5,7 @@ import discord
 
 # bot = commands.Bot(command_prefix="!")
 token = getenv("DISCORD_BOT_TOKEN")
-INITIAL_PLUGINS = ["plugin.echo" "plugin.calendar"]
+INITIAL_PLUGINS = ["plugin.echo", "plugin.calendar"]
 
 # bot.run(token)
 class TheGeneralBot(commands.Bot):
