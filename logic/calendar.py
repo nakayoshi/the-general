@@ -2,14 +2,7 @@ import urllib.request, json
 from os import getenv
 
 class CalendarImpl:
-    def command_parse(text: str):
-        command = text.split(" ")        
-
-        title = command[0]
-        dateindex = int(command.index("-d") + 1)
-        date = command[dateindex]
-        locationindex = int(command.index("-l") + 1)
-        location = command[locationindex]
+    def _create_post_data(title: str, date: str, location: str) -> bytes:
 
         obj = {"value1" : date, "value2" : title, "value3" : location} 
         json_data = json.dumps(obj).encode("utf-8")
@@ -32,4 +25,3 @@ class CalendarImpl:
         urllib.request.urlopen(request)
 
         return message
-
