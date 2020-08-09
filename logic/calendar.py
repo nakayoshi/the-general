@@ -16,7 +16,7 @@ class CalendarImpl:
         url = getenv("CALENDAR_WEBHOOK_URL")
         method = "POST"
         headers = {"Content-Type": "application/json"}
-        json_data = command_parse(title, date, location)
+        json_data = CalendarImpl._create_post_data(title, date, location)
 
         # http request
         request = urllib.request.Request(
