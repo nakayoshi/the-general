@@ -5,9 +5,7 @@ import discord
 
 # bot = commands.Bot(command_prefix="!")
 token = getenv("DISCORD_BOT_TOKEN")
-INITIAL_PLUGINS = [
-    "plugin.echo"
-]
+INITIAL_PLUGINS = ["plugin.echo" "plugin.calendar"]
 
 # bot.run(token)
 class TheGeneralBot(commands.Bot):
@@ -18,7 +16,9 @@ class TheGeneralBot(commands.Bot):
                 self.load_extension(cog)
                 print(f"loaded {cog}")
             except Exception as exc:
-                print(f"Could not load extension {cog} due to {exc.__class__.__name__}: {exc}")
+                print(
+                    f"Could not load extension {cog} due to {exc.__class__.__name__}: {exc}"
+                )
 
 
 bot = TheGeneralBot()
