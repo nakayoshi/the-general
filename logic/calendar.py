@@ -10,18 +10,13 @@ class CalendarImpl:
         return json_data
 
     @classmethod
-    def add_event(cls, text: str):
-        message = "Success!"        
-
+    def add_event(cls, title: str, date: str, location: str):   
         # set up POST data
-        url = getenv("CALENDAR_WEBHOOK")
+        url = getenv("CALENDAR_WEBHOOK_URL")
         method = "POST"
         headers = {"Content-Type": "application/json"}
-
-        json_data= command_parse(text)
+        json_data = command_parse(title, date, location)
 
         # http request
         request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
         urllib.request.urlopen(request)
-
-        return message
