@@ -1,7 +1,9 @@
+from datetime import datetime
 from enum import Enum
-from datetime import timezone, timedelta
+from typing import Any
 
 from discord import Embed
+from discord.abc import User
 
 
 class NoActionError(Exception):
@@ -19,16 +21,16 @@ class ActionData(Enum):
 
 class ServerLogImpl:
     @classmethod
-    def create_log_embed(cls, log_type, *args, **kwargs):
-        if not (handler := getattr(cls, "_" + log_type, None)):
+    def create_log_embed(cls, log_type: str, *args, **kwargs) -> Any:
+        if (handler := getattr(cls, "_" + log_type, None)) is None:
             raise NoActionError()
         return handler(*args, **kwargs)
 
     @classmethod
-    def _channel(cls, action: str, user, channel_name, created_at):
+    def _channel(
+        cls, action: str, user: User, channel_name: str, created_at: datetime
+    ) -> Embed:
         data = ActionData[action]
-        JST = timezone(timedelta(hours=+9), "JST")
-
         embed = Embed(
             title=f"チャンネルが{data.text}されました", color=data.color, timestamp=created_at
         )
