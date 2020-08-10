@@ -1,5 +1,6 @@
-from logic.calendar import CalendarImpl
 import json
+
+from logic.calendar import CalendarImpl
 
 
 def test_command_parse():

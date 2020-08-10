@@ -1,7 +1,5 @@
-from discord.ext.commands import Bot
-from discord.ext.commands import Cog
-from discord.ext.commands import Context
-from discord.ext.commands import command
+from discord.ext.commands import Bot, Cog, Context, command
+
 from logic.calendar import CalendarImpl
 
 
