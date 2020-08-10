@@ -11,7 +11,7 @@ class CalendarImpl:
         return json_data
 
     @classmethod
-    def add_event(cls, title: str, date: str, location: str):
+    def add_event(cls, title: str, date: str, location: str) -> None: 
         # set up POST data
         url = getenv("CALENDAR_WEBHOOK_URL")
         method = "POST"
