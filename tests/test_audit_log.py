@@ -32,7 +32,6 @@ class TestCreateEmbed(unittest.TestCase):
     def test_create_channel_embed(self):
         title = "チャンネルが作成されました"
         color = 0x5CB85C
-        self.sample_embed.add_field(name="チャンネル", value=self.channel_name, inline=True)
 
         implemented_embed = ServerLogImpl._channel(
             "create", self.user, self.channel_name, self.created_at
