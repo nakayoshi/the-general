@@ -20,7 +20,7 @@ class ActionData(Enum):
 class ServerLogImpl:
     @classmethod
     def create_log_embed(cls, log_type, *args, **kwargs):
-        if not (handler := getattr(cls, "_" + log_type)):
+        if not (handler := getattr(cls, "_" + log_type, None)):
             raise NoActionError()
         return handler(*args, **kwargs)
 
@@ -29,12 +29,9 @@ class ServerLogImpl:
         data = ActionData[action]
         JST = timezone(timedelta(hours=+9), "JST")
 
-        embed = Embed(title=f"チャンネルが{data.text}されました", color=data.color)
+        embed = Embed(
+            title=f"チャンネルが{data.text}されました", color=data.color, timestamp=created_at
+        )
         embed.set_author(name=user.name, icon_url=user.avatar_url)
         embed.add_field(name="チャンネル", value=channel_name, inline=True)
-        embed.add_field(
-            name="タイムスタンプ",
-            value=created_at.replace(tzinfo=JST).isoformat(" ", timespec="seconds"),
-            inline=True,
-        )
         return embed
