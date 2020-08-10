@@ -19,4 +19,4 @@ allow_prereleases = true
 
 [scripts]
 bot = "python bot.py"
-test = "python -m unittest"
+test = "pytest"
