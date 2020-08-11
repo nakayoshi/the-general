@@ -9,9 +9,15 @@ class Calendar(Cog):
 
     @command()
     async def add_event(
-        self, ctx: Context, title: str, date: str, location: str
+        self,
+        ctx: Context,
+        title: str,
+        date: str,
+        starttime: str,
+        endtime: str,
+        location: str,
     ) -> None:
-        CalendarImpl.add_event(title, date, location)
+        CalendarImpl.add_event(title, date, starttime, endtime, location)
         await ctx.send("Success!")
 
 
