@@ -1,12 +1,11 @@
 import json
 
-from logic.calendar import CalendarImpl
+from logic.calendar import CalendarImpl, Event
 
 
 def test_command_parse():
-    result = CalendarImpl._create_post_data(
-        "testtitle", "10/10", "10:00", "11:00", "japan"
-    )
+    newevent = Event("testtitle", "10/10", "10:00", "11:00", "japan")
+    result = CalendarImpl._create_post_data(newevent)
     obj = {
         "title": "testtitle",
         "date": "10/10",
