@@ -1,6 +1,6 @@
 from discord.ext.commands import Bot, Cog, Context, command
 
-from logic.calendar import CalendarImpl, Event
+from logic.calendar import GoogleCalendarImpl, Event
 
 
 class Calendar(Cog):
@@ -17,8 +17,9 @@ class Calendar(Cog):
         endtime: str,
         location: str,
     ) -> None:
+        calendar = GoogleCalendarImpl()
         newevent = Event(title, date, starttime, endtime, location)
-        CalendarImpl.add_event(newevent)
+        calendar.add_schedule(newevent)
         await ctx.send("Success!")
 
 
