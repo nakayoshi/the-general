@@ -17,31 +17,30 @@ class Event:
     endtime: str
     location: str
 
-    def get_datetime_starttime(self) -> str:
-        today = datetime.date.today()
-        splitteddate = self.date.split("/")
-        stime = self.starttime.split(":")
+    def _get_datetime(date, time) -> str:
+        today = datetime.datetime.today()
+        splitteddate = date.split("/")
+        splittedtime = time.split(":")
 
         return datetime.datetime(
             today.year,
             int(splitteddate[0]),
             int(splitteddate[1]),
-            int(stime[0]),
-            int(stime[1]),
+            int(splittedtime[0]),
+            int(splittedtime[1]),
         ).isoformat()
 
-    def get_datetime_endtime(self) -> str:
-        today = datetime.date.today()
-        splitteddate = self.date.split("/")
-        etime = self.endtime.split(":")
+    @property
+    def get_starttime(self) -> str:
+        datetime = Event._get_datetime(self.date, self.starttime)
 
-        return datetime.datetime(
-            today.year,
-            int(splitteddate[0]),
-            int(splitteddate[1]),
-            int(etime[0]),
-            int(etime[1]),
-        ).isoformat()
+        return datetime
+
+    @property
+    def get_endtime(self) -> str:
+        datetime = Event._get_datetime(self.date, self.endtime)
+
+        return datetime
 
 
 class ISheduleRepository(metaclass=ABCMeta):
