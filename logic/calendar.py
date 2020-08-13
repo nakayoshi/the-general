@@ -1,6 +1,4 @@
 import datetime
-import json
-import urllib.request
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 from os import getenv
