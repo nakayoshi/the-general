@@ -89,14 +89,7 @@ class GoogleCalendarImpl(ISheduleRepository):
 
         event = (
             service.events()
-<<<<<<< HEAD
-            .insert(calendarId=getenv("CALENDAR_ID"), body=body,)
-=======
-            .insert(
-                calendarId="5sgb2j2vhufs07ojnl3bqfek1o@group.calendar.google.com",
-                body=body,
-            )
->>>>>>> feature-calender
+            .insert(calendarId=getenv("CALENDAR_ID"), body=body)
             .execute()
         )
 
