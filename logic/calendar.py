@@ -72,11 +72,8 @@ class GoogleCalendarImpl(ICalendar):
         body = {
             "summary": newevent.title,
             "location": newevent.location,
-            "start": {
-                "dateTime": newevent.get_datetime_starttime(),
-                "timeZone": "Japan",
-            },
-            "end": {"dateTime": newevent.get_datetime_endtime(), "timeZone": "Japan"},
+            "start": {"dateTime": newevent.get_starttime, "timeZone": "Japan",},
+            "end": {"dateTime": newevent.get_endtime, "timeZone": "Japan"},
         }
 
         return body
