@@ -1,17 +1,16 @@
 import json
 
-from logic.calendar import CalendarImpl, Event
+from logic.calendar import GoogleCalendarImpl, Event
 
 
 def test_command_parse():
+    calendar = GoogleCalendarImpl()
     newevent = Event("testtitle", "10/10", "10:00", "11:00", "japan")
-    result = CalendarImpl._create_post_data(newevent)
+    result = calendar._create_event_obj(newevent)
     obj = {
-        "title": "testtitle",
-        "date": "10/10",
-        "starttime": "10:00",
-        "endtime": "11:00",
+        "summary": "testtitle",
         "location": "japan",
+        "start": {"dateTime": "2020-10-10T10:00:00", "timeZone": "Japan"},
+        "end": {"dateTime": "2020-10-10T11:00:00", "timeZone": "Japan"},
     }
-    json_data = json.dumps(obj).encode("utf-8")
-    assert result == json_data
+    assert result == obj
