@@ -68,7 +68,7 @@ class GoogleCalendarImpl(ICalendar):
 
         return service
 
-    def _create_event_obj(newevent) -> bytes:
+    def _create_event_obj(newevent) -> dict:
         body = {
             "summary": newevent.title,
             "location": newevent.location,
