@@ -43,22 +43,22 @@ class Event:
         return datetime
 
 
-class ISheduleRepository(metaclass=ABCMeta):
+class ICalendar(metaclass=ABCMeta):
     @abstractmethod
     def _get_service():
         pass
 
     @abstractmethod
-    def _create_shedule_obj(newevent: Event) -> bytes:
+    def _create_event_obj(newevent: Event) -> bytes:
         pass
 
     @classmethod
     @abstractmethod
-    def add_schedule(cls, newevent: Event) -> None:
+    def add_event(cls, newevent: Event) -> None:
         pass
 
 
-class GoogleCalendarImpl(ISheduleRepository):
+class GoogleCalendarImpl(ICalendar):
     def _get_service():
         credentials = service_account.Credentials.from_service_account_file("key.json")
         scoped_credentials = credentials.with_scopes(
@@ -68,7 +68,7 @@ class GoogleCalendarImpl(ISheduleRepository):
 
         return service
 
-    def _create_shedule_obj(newevent) -> bytes:
+    def _create_event_obj(newevent) -> bytes:
         body = {
             "summary": newevent.title,
             "location": newevent.location,
@@ -82,8 +82,8 @@ class GoogleCalendarImpl(ISheduleRepository):
         return body
 
     @classmethod
-    def add_schedule(cls, newevent) -> None:
-        body = GoogleCalendarImpl._create_shedule_obj(newevent)
+    def add_event(cls, newevent) -> None:
+        body = GoogleCalendarImpl._create_event_obj(newevent)
         service = GoogleCalendarImpl._get_service()
 
         event = (

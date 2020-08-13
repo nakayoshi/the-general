@@ -19,7 +19,7 @@ class Calendar(Cog):
     ) -> None:
         calendar = GoogleCalendarImpl()
         newevent = Event(title, date, starttime, endtime, location)
-        calendar.add_schedule(newevent)
+        calendar.add_event(newevent)
         await ctx.send("Success!")
 
 
