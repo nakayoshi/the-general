@@ -13,13 +13,13 @@ class Calendar(Cog):
         ctx: Context,
         title: str,
         date: str,
-        starttime: str,
-        endtime: str,
+        start_time: str,
+        end_time: str,
         location: str,
     ) -> None:
         calendar = GoogleCalendarImpl()
-        newevent = Event(title, date, starttime, endtime, location)
-        calendar.add_event(newevent)
+        new_event = Event(title, date, start_time, end_time, location)
+        calendar.add_event(new_event)
         await ctx.send("Success!")
 
 

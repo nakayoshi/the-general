@@ -3,8 +3,8 @@ from logic.calendar import Event, GoogleCalendarMockImpl
 
 def test_command_parse():
     calendar = GoogleCalendarMockImpl()
-    newevent = Event("testtitle", "10/10", "10:00", "11:00", "japan")
-    result = calendar.add_event(newevent)
+    new_event = Event("testtitle", "10/10", "10:00", "11:00", "japan")
+    result = calendar.add_event(new_event)
     obj = {
         "summary": "testtitle",
         "location": "japan",
