@@ -49,6 +49,7 @@ class ICalendar(metaclass=ABCMeta):
     def _get_service():
         pass
 
+    @staticmethod
     @abstractmethod
     def _create_event_obj(newevent: Event) -> Dict:
         pass
@@ -70,7 +71,8 @@ class GoogleCalendarImpl(ICalendar):
 
         return service
 
-    def _create_event_obj(self, newevent) -> Dict:
+    @staticmethod
+    def _create_event_obj(newevent) -> Dict:
         body = {
             "summary": newevent.title,
             "location": newevent.location,
