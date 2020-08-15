@@ -1,6 +1,4 @@
-import json
-
-from logic.calendar import GoogleCalendarMockImpl, Event
+from logic.calendar import Event, GoogleCalendarMockImpl
 
 
 def test_command_parse():
