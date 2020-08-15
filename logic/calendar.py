@@ -2,6 +2,7 @@ import datetime
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 from os import getenv
+from typing import Dict
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -49,7 +50,7 @@ class ICalendar(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def _create_event_obj(newevent: Event) -> bytes:
+    def _create_event_obj(newevent: Event) -> Dict:
         pass
 
     @classmethod
@@ -69,7 +70,7 @@ class GoogleCalendarImpl(ICalendar):
 
         return service
 
-    def _create_event_obj(self, newevent) -> dict:
+    def _create_event_obj(self, newevent) -> Dict:
         body = {
             "summary": newevent.title,
             "location": newevent.location,
