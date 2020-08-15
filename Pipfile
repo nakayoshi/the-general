@@ -10,6 +10,8 @@ black = "*"
 
 [packages]
 "discord.py" = "*"
+google-api-python-client = "*"
+google-auth = "*"
 
 [requires]
 python_version = "3.8"
