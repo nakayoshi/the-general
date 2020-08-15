@@ -2,7 +2,7 @@ import datetime
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 from os import getenv
-from typing import Dict
+from typing import Dict, Optional
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -55,7 +55,7 @@ class ICalendar(metaclass=ABCMeta):
 
     @classmethod
     @abstractmethod
-    def add_event(cls, newevent: Event) -> None:
+    def add_event(cls, newevent: Event) -> Optional[Dict]:
         pass
 
 
