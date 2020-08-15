@@ -72,7 +72,7 @@ class GoogleCalendarImpl(ICalendar):
         return service
 
     @staticmethod
-    def _create_event_obj(newevent) -> Dict:
+    def _create_event_obj(newevent: Event) -> Dict:
         body = {
             "summary": newevent.title,
             "location": newevent.location,
@@ -83,7 +83,7 @@ class GoogleCalendarImpl(ICalendar):
         return body
 
     @classmethod
-    def add_event(cls, newevent) -> None:
+    def add_event(cls, newevent: Event) -> None:
         body = GoogleCalendarImpl._create_event_obj(newevent)
         service = GoogleCalendarImpl._get_service()
 
