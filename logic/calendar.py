@@ -111,4 +111,3 @@ class GoogleCalendarMockImpl(ICalendar):
         body = GoogleCalendarMockImpl._create_event_obj(newevent)
 
         return body
-
