@@ -85,8 +85,4 @@ class GoogleCalendarImpl(ICalendar):
         body = GoogleCalendarImpl._create_event_obj(newevent)
         service = GoogleCalendarImpl._get_service()
 
-        event = (
-            service.events()
-            .insert(calendarId=getenv("CALENDAR_ID"), body=body)
-            .execute()
-        )
+        service.events().insert(calendarId=getenv("CALENDAR_ID"), body=body).execute()
