@@ -32,15 +32,15 @@ class Event:
 
     @property
     def get_starttime(self) -> str:
-        datetime = Event._get_datetime(self.date, self.starttime)
+        startdatetime = Event._get_datetime(self.date, self.starttime)
 
-        return datetime
+        return startdatetime
 
     @property
     def get_endtime(self) -> str:
-        datetime = Event._get_datetime(self.date, self.endtime)
+        enddatetime = Event._get_datetime(self.date, self.endtime)
 
-        return datetime
+        return enddatetime
 
 
 class ICalendar(metaclass=ABCMeta):
