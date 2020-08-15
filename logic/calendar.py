@@ -88,3 +88,27 @@ class GoogleCalendarImpl(ICalendar):
         service = GoogleCalendarImpl._get_service()
 
         service.events().insert(calendarId=getenv("CALENDAR_ID"), body=body).execute()
+
+
+class GoogleCalendarMockImpl(ICalendar):
+    @staticmethod
+    def _get_service():
+        pass
+
+    @staticmethod
+    def _create_event_obj(newevent: Event) -> Dict:
+        body = {
+            "summary": newevent.title,
+            "location": newevent.location,
+            "start": {"dateTime": newevent.get_starttime, "timeZone": "Japan",},
+            "end": {"dateTime": newevent.get_endtime, "timeZone": "Japan"},
+        }
+
+        return body
+
+    @classmethod
+    def add_event(cls, newevent: Event) -> Dict:
+        body = GoogleCalendarMockImpl._create_event_obj(newevent)
+
+        return body
+

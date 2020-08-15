@@ -1,12 +1,12 @@
 import json
 
-from logic.calendar import GoogleCalendarImpl, Event
+from logic.calendar import GoogleCalendarMockImpl, Event
 
 
 def test_command_parse():
-    calendar = GoogleCalendarImpl()
+    calendar = GoogleCalendarMockImpl()
     newevent = Event("testtitle", "10/10", "10:00", "11:00", "japan")
-    result = calendar._create_event_obj(newevent)
+    result = calendar.add_event(newevent)
     obj = {
         "summary": "testtitle",
         "location": "japan",
