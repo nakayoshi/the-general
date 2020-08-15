@@ -15,6 +15,7 @@ class Event:
     endtime: str
     location: str
 
+    @staticmethod
     def _get_datetime(date, time) -> str:
         today = datetime.datetime.today()
         splitteddate = date.split("/")
@@ -42,6 +43,7 @@ class Event:
 
 
 class ICalendar(metaclass=ABCMeta):
+    @staticmethod
     @abstractmethod
     def _get_service():
         pass
@@ -57,6 +59,7 @@ class ICalendar(metaclass=ABCMeta):
 
 
 class GoogleCalendarImpl(ICalendar):
+    @staticmethod
     def _get_service():
         credentials = service_account.Credentials.from_service_account_file("key.json")
         scoped_credentials = credentials.with_scopes(
